@@ -230,7 +230,7 @@
 				ORGANIZATIONNAME = VK;
 				TargetAttributes = {
 					F3EEFF651827B1DD000BB525 = {
-						DevelopmentTeam = R26JY69RPL;
+						DevelopmentTeam = QGPEYR7S6N;
 					};
 				};
 			};
@@ -239,6 +239,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				ru,
 			);
@@ -417,6 +418,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = QGPEYR7S6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/VKSDKTestApplication",
@@ -449,6 +451,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = QGPEYR7S6N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/VKSDKTestApplication",

@@ -180,7 +180,6 @@
 		F346713C1B8B7D07003EF74B /* NSString+MD5.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ACA6E07E9640D2B9D9B4831 /* NSString+MD5.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F346713D1B8B7D07003EF74B /* VKUploadImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ACA68CDC5C08713A61C5AD1 /* VKUploadImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F346713E1B8B7D07003EF74B /* VKImageParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ACA62D0E659DB7778EF2633 /* VKImageParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F34DECF61D2171E3005495E5 /* SdkAssetCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34DECF11D2171A1005495E5 /* SdkAssetCatalog.xcassets */; };
 		F34DECF71D217260005495E5 /* SdkAssetCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F34DECF11D2171A1005495E5 /* SdkAssetCatalog.xcassets */; };
 		F36114A9197685810085898F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F36114A4197684870085898F /* Localizable.strings */; };
 		F3769D411BDFDC6F00AEC4AF /* VKAuthorizationResult.h in Headers */ = {isa = PBXBuildFile; fileRef = F3769D3F1BDFDC6F00AEC4AF /* VKAuthorizationResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -936,6 +935,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				ru,
@@ -959,7 +959,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F34670681B8B7C8E003EF74B /* Localizable.strings in Resources */,
-				F34DECF61D2171E3005495E5 /* SdkAssetCatalog.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
