@@ -40,15 +40,15 @@
     _methodGroup = methodGroup;
 }
 
-- (VKRequest *)prepareRequestWithMethodName:(NSString *)methodName
+- (VKSdkRequest *)prepareRequestWithMethodName:(NSString *)methodName
                                  parameters:(NSDictionary *)methodParameters {
     return [self prepareRequestWithMethodName:methodName parameters:methodParameters modelClass:nil];
 }
 
-- (VKRequest *)prepareRequestWithMethodName:(NSString *)methodName
+- (VKSdkRequest *)prepareRequestWithMethodName:(NSString *)methodName
                                  parameters:(NSDictionary *)methodParameters
                                  modelClass:(Class)modelClass {
-    return [VKRequest requestWithMethod:[NSString stringWithFormat:@"%@.%@", _methodGroup, methodName]
+    return [VKSdkRequest requestWithMethod:[NSString stringWithFormat:@"%@.%@", _methodGroup, methodName]
                              parameters:methodParameters
                              modelClass:modelClass];
 }

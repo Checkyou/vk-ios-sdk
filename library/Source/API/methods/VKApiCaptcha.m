@@ -23,7 +23,7 @@
 #import "VKApiCaptcha.h"
 
 @implementation VKApiCaptcha
-- (VKRequest *)force {
+- (VKSdkRequest *)force {
     return [self prepareRequestWithMethodName:@"force" parameters:nil];
 }
 

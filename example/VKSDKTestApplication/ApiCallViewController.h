@@ -25,5 +25,5 @@
 @interface ApiCallViewController : UIViewController
 @property(nonatomic, strong) IBOutlet UILabel *methodName;
 @property(nonatomic, strong) IBOutlet UITextView *callResult;
-@property(nonatomic, strong) VKRequest *callingRequest;
+@property(nonatomic, strong) VKSdkRequest *callingRequest;
 @end

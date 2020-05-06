@@ -31,5 +31,5 @@ https://vk.com/dev/wall.post
 @param params Use parameters from description with VK_API prefix
 @return Request for execution
 */
-- (VKRequest *)post:(NSDictionary *)params;
+- (VKSdkRequest *)post:(NSDictionary *)params;
 @end

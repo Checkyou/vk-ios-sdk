@@ -22,7 +22,7 @@
 
 
 #import "VKRequestsScheduler.h"
-#import "VKRequest.h"
+#import "VKSdkRequest.h"
 #import "VKSdk.h"
 
 @implementation VKRequestsScheduler {
@@ -83,7 +83,7 @@
     return 1.f / _currentLimitPerSecond;
 }
 
-- (void)scheduleRequest:(VKRequest *)req {
+- (void)scheduleRequest:(VKSdkRequest *)req {
     if (!_enabled) {
         [req start];
         return;

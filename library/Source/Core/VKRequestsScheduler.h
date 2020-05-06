@@ -23,7 +23,7 @@
 #import <Foundation/Foundation.h>
 #import "VKObject.h"
 
-@class VKRequest;
+@class VKSdkRequest;
 
 /**
 * A singletone class for simple schedule requests. It used for preventing "Too many requests per second" error.
@@ -36,7 +36,7 @@
 - (void)setEnabled:(BOOL)enabled;
 
 /// Adds requests to queue. If scheduler disabled, request starts immediately
-- (void)scheduleRequest:(VKRequest *)req;
+- (void)scheduleRequest:(VKSdkRequest *)req;
 
 - (NSTimeInterval)currentAvailableInterval;
 @end

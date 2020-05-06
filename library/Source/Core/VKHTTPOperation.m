@@ -24,7 +24,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import "VKHTTPOperation.h"
-#import "VKRequest.h"
+#import "VKSdkRequest.h"
 #import "NSError+VKError.h"
 
 NSString *const VKNetworkingOperationFailingURLRequestErrorKey = @"VKNetworkingOperationFailingURLRequestErrorKey";
@@ -51,7 +51,7 @@ typedef void (^VKURLConnectionOperationProgressBlock)(NSUInteger bytes, long lon
 @property(readwrite, nonatomic, strong) NSError *HTTPError;
 @property(nonatomic, strong) NSOutputStream *outputStream;
 @property(readwrite, nonatomic, strong) NSError *JSONError;
-@property(readwrite, nonatomic, weak) VKRequest *vkRequest;
+@property(readwrite, nonatomic, weak) VKSdkRequest *vkRequest;
 @end
 
 static void VKGetMediaTypeAndSubtypeWithString(NSString *string, NSString **type, NSString **subtype) {
@@ -69,7 +69,7 @@ static void VKGetMediaTypeAndSubtypeWithString(NSString *string, NSString **type
 @implementation VKHTTPOperation
 @dynamic lock;
 
-+ (instancetype)operationWithRequest:(VKRequest *)request {
++ (instancetype)operationWithRequest:(VKSdkRequest *)request {
     NSURLRequest *urlRequest = [request getPreparedRequest];
 
     if (!urlRequest)

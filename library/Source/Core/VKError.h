@@ -30,7 +30,7 @@ static int const VK_API_REQUEST_NOT_PREPARED = -103;
 static int const VK_RESPONSE_STRING_PARSING_ERROR = -104;
 static int const VK_AUTHORIZE_CONTROLLER_CANCEL = -105;
 
-@class VKRequest;
+@class VKSdkRequest;
 
 /**
 Class for presenting VK SDK and VK API errors
@@ -41,7 +41,7 @@ Class for presenting VK SDK and VK API errors
 /// Describes API error
 @property(nonatomic, strong) VKError *apiError;
 /// Request which caused error
-@property(nonatomic, strong) VKRequest *request;
+@property(nonatomic, strong) VKSdkRequest *request;
 
 /// May contains such errors:\n <b>HTTP status code</b> if HTTP error occured;\n <b>VK_API_ERROR</b> if API error occured;\n <b>VK_API_CANCELED</b> if request was canceled;\n <b>VK_API_REQUEST_NOT_PREPARED</b> if error occured while preparing request;
 @property(nonatomic, assign) NSInteger errorCode;

@@ -31,15 +31,15 @@
     return self;
 }
 
-- (VKRequest *)getServerRequest {
+- (VKSdkRequest *)getServerRequest {
     if (self.groupId != 0)
         return [[VKApi photos] getWallUploadServer:self.groupId];
     else
         return [[VKApi photos] getWallUploadServer];
 }
 
-- (VKRequest *)getSaveRequest:(VKResponse *)response {
-    VKRequest *saveRequest = [[VKApi photos] saveWallPhoto:response.json];
+- (VKSdkRequest *)getSaveRequest:(VKResponse *)response {
+    VKSdkRequest *saveRequest = [[VKApi photos] saveWallPhoto:response.json];
     if (self.userId)
         [saveRequest addExtraParameters:@{VK_API_USER_ID : @(self.userId)}];
     if (self.groupId)

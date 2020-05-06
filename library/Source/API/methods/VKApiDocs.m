@@ -29,15 +29,15 @@
  */
 @implementation VKApiDocs : VKApiBase
 
-- (VKRequest *)get {
+- (VKSdkRequest *)get {
   return [self prepareRequestWithMethodName:@"get" parameters:nil modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)get:(NSInteger)count {
+- (VKSdkRequest *)get:(NSInteger)count {
   return [self prepareRequestWithMethodName:@"get" parameters: @{VK_API_COUNT : @(count)} modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)get:(NSInteger)count andOffset:(NSInteger)offset {
+- (VKSdkRequest *)get:(NSInteger)count andOffset:(NSInteger)offset {
   return [self prepareRequestWithMethodName:@"get"
                                  parameters:
         @{
@@ -47,7 +47,7 @@
                               modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)get:(NSInteger)count andOffset:(NSInteger)offset andOwnerID:(NSInteger)ownerID {
+- (VKSdkRequest *)get:(NSInteger)count andOffset:(NSInteger)offset andOwnerID:(NSInteger)ownerID {
   return [self prepareRequestWithMethodName:@"get"
                                  parameters:
   @{
@@ -58,31 +58,31 @@
                               modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)getByID:(NSArray *)IDs {
+- (VKSdkRequest *)getByID:(NSArray *)IDs {
   return [self prepareRequestWithMethodName:@"getById" parameters:@{@"docs" : IDs} modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)getUploadServer {
+- (VKSdkRequest *)getUploadServer {
   return [self prepareRequestWithMethodName:@"getUploadServer" parameters:nil];
 }
 
-- (VKRequest *)getUploadServer:(NSInteger)group_id {
+- (VKSdkRequest *)getUploadServer:(NSInteger)group_id {
   return [self prepareRequestWithMethodName:@"getUploadServer" parameters:@{VK_API_GROUP_ID : [@(group_id) stringValue]}];
 }
 
-- (VKRequest *)getWallUploadServer {
+- (VKSdkRequest *)getWallUploadServer {
   return [self prepareRequestWithMethodName:@"getWallUploadServer" parameters:nil];
 }
 
-- (VKRequest *)getWallUploadServer:(NSInteger)group_id {
+- (VKSdkRequest *)getWallUploadServer:(NSInteger)group_id {
   return [self prepareRequestWithMethodName:@"getWallUploadServer" parameters:@{VK_API_GROUP_ID : [@(group_id) stringValue]}];
 }
 
-- (VKRequest *)save:(NSString *)file {
+- (VKSdkRequest *)save:(NSString *)file {
   return [self prepareRequestWithMethodName:@"save" parameters:@{VK_API_FILE : file} modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)save:(NSString *)file andTitle:(NSString *)title {
+- (VKSdkRequest *)save:(NSString *)file andTitle:(NSString *)title {
   return [self prepareRequestWithMethodName:@"save" parameters:@{
                                                                       VK_API_FILE   : file,
                                                                       VK_API_TITLE  : title,
@@ -90,7 +90,7 @@
 }
 
 
-- (VKRequest *)save:(NSString *)file andTitle:(NSString *)title andTags:(NSString *)tags {
+- (VKSdkRequest *)save:(NSString *)file andTitle:(NSString *)title andTags:(NSString *)tags {
   return [self prepareRequestWithMethodName:@"save" parameters:@{
                                                                       VK_API_FILE   : file,
                                                                       VK_API_TITLE  : title,
@@ -98,21 +98,21 @@
                                                                       } modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)delete:(NSInteger)ownerID andDocID:(NSInteger)docID {
+- (VKSdkRequest *)delete:(NSInteger)ownerID andDocID:(NSInteger)docID {
   return [self prepareRequestWithMethodName:@"delete" parameters:@{
                                                                 VK_API_OWNER_ID : [@(ownerID) stringValue],
                                                                 VK_API_DOC_ID   : [@(docID) stringValue],
                                                                 }];
 }
 
-- (VKRequest *)add:(NSInteger)ownerID andDocID:(NSInteger)docID {
+- (VKSdkRequest *)add:(NSInteger)ownerID andDocID:(NSInteger)docID {
   return [self prepareRequestWithMethodName:@"add" parameters:@{
                                                                    VK_API_OWNER_ID   : [@(ownerID) stringValue],
                                                                    VK_API_DOC_ID     : [@(docID) stringValue]
                                                                    }];
 }
 
-- (VKRequest *)add:(NSInteger)ownerID andDocID:(NSInteger)docID andAccessKey:(NSString *)accessKey {
+- (VKSdkRequest *)add:(NSInteger)ownerID andDocID:(NSInteger)docID andAccessKey:(NSString *)accessKey {
   return [self prepareRequestWithMethodName:@"add" parameters:@{
                                                                 VK_API_OWNER_ID   : [@(ownerID) stringValue],
                                                                 VK_API_DOC_ID     : [@(docID) stringValue],
@@ -120,18 +120,18 @@
                                                                 }];
 }
 
-- (VKRequest *)search:(NSString *)query {
+- (VKSdkRequest *)search:(NSString *)query {
   return [self prepareRequestWithMethodName:@"search" parameters:@{VK_API_Q : query} modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)search:(NSString *)query count:(NSInteger)count {
+- (VKSdkRequest *)search:(NSString *)query count:(NSInteger)count {
   return [self prepareRequestWithMethodName:@"search" parameters:@{
                                                                    VK_API_Q     : query,
                                                                    VK_API_COUNT : [@(count) stringValue]
                                                                    } modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)search:(NSString *)query count:(NSInteger)count andOffset:(NSInteger)offset {
+- (VKSdkRequest *)search:(NSString *)query count:(NSInteger)count andOffset:(NSInteger)offset {
   return [self prepareRequestWithMethodName:@"search" parameters:@{
                                                                    VK_API_Q      :  query,
                                                                    VK_API_COUNT  : [@(count) stringValue],
@@ -139,14 +139,14 @@
                                                                    } modelClass:[VKDocsArray class]];
 }
 
-- (VKRequest *)edit:(NSInteger)docID title:(NSString *)title {
+- (VKSdkRequest *)edit:(NSInteger)docID title:(NSString *)title {
   return [self prepareRequestWithMethodName:@"edit" parameters:@{
                                                                  VK_API_DOC_ID : [@(docID) stringValue],
                                                                  VK_API_TITLE  : title
                                                                  }];
 }
 
-- (VKRequest *)edit:(NSInteger)docID title:(NSString *)title tags:(NSString *)tags {
+- (VKSdkRequest *)edit:(NSInteger)docID title:(NSString *)title tags:(NSString *)tags {
   return [self prepareRequestWithMethodName:@"edit" parameters:@{
                                                                  VK_API_DOC_ID : [@(docID) stringValue],
                                                                  VK_API_TITLE  : title,
@@ -154,7 +154,7 @@
                                                                  }];
 }
 
-- (VKRequest *)edit:(NSInteger)ownerID docID:(NSInteger)docID title:(NSString *)title {
+- (VKSdkRequest *)edit:(NSInteger)ownerID docID:(NSInteger)docID title:(NSString *)title {
   return [self prepareRequestWithMethodName:@"edit" parameters:@{
                                                                  VK_API_OWNER_ID : [@(ownerID) stringValue],
                                                                  VK_API_DOC_ID   : [@(docID) stringValue],
@@ -162,7 +162,7 @@
                                                                  }];
 }
 
-- (VKRequest *)edit:(NSInteger)ownerID docID:(NSInteger)docID title:(NSString *)title tags:(NSString *)tags {
+- (VKSdkRequest *)edit:(NSInteger)ownerID docID:(NSInteger)docID title:(NSString *)title tags:(NSString *)tags {
   return [self prepareRequestWithMethodName:@"edit" parameters:@{
                                                                  VK_API_OWNER_ID : [@(ownerID) stringValue],
                                                                  VK_API_DOC_ID : [@(docID) stringValue],

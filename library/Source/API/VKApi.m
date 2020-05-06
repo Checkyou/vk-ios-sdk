@@ -46,32 +46,32 @@
     return [VKApiGroups new];
 }
 
-+ (VKRequest *)requestWithMethod:(NSString *)method
++ (VKSdkRequest *)requestWithMethod:(NSString *)method
                    andParameters:(NSDictionary *)parameters {
-    return [VKRequest requestWithMethod:method parameters:parameters];
+    return [VKSdkRequest requestWithMethod:method parameters:parameters];
 }
 
-+ (VKRequest *)requestWithMethod:(NSString *)method
++ (VKSdkRequest *)requestWithMethod:(NSString *)method
                    andParameters:(NSDictionary *)parameters
                    andHttpMethod:(NSString *)httpMethod {
-    return [VKRequest requestWithMethod:method parameters:parameters];
+    return [VKSdkRequest requestWithMethod:method parameters:parameters];
 }
 
-+ (VKRequest *)uploadWallPhotoRequest:(UIImage *)image
++ (VKSdkRequest *)uploadWallPhotoRequest:(UIImage *)image
                            parameters:(VKImageParameters *)parameters
                                userId:(NSInteger)userId
                               groupId:(NSInteger)groupId {
     return [[VKUploadWallPhotoRequest alloc] initWithImage:image parameters:parameters userId:userId groupId:groupId];
 }
 
-+ (VKRequest *)uploadAlbumPhotoRequest:(UIImage *)image
++ (VKSdkRequest *)uploadAlbumPhotoRequest:(UIImage *)image
                             parameters:(VKImageParameters *)parameters
                                albumId:(NSInteger)albumId
                                groupId:(NSInteger)groupId {
     return [[VKUploadPhotoRequest alloc] initWithImage:image parameters:parameters albumId:albumId groupId:groupId];
 }
 
-+ (VKRequest *)uploadMessagePhotoRequest:(UIImage *)image parameters:(VKImageParameters *)parameters {
++ (VKSdkRequest *)uploadMessagePhotoRequest:(UIImage *)image parameters:(VKImageParameters *)parameters {
     return [[VKUploadMessagesPhotoRequest alloc] initWithImage:image parameters:parameters];
 }
 

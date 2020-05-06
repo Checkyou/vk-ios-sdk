@@ -31,7 +31,7 @@
 #import "VKApiConst.h"
 #import "VKSdkVersion.h"
 #import "VKCaptchaViewController.h"
-#import "VKRequest.h"
+#import "VKSdkRequest.h"
 #import "VKBatchRequest.h"
 #import "NSError+VKError.h"
 #import "VKApiModels.h"

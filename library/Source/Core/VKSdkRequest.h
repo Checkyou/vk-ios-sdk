@@ -84,7 +84,7 @@ Creates and debug timings for VKRequest
     }];
  
 */
-@interface VKRequest : VKObject
+@interface VKSdkRequest : VKObject
 /// Specify progress for uploading or downloading. Useless for text requests (because gzip encoding bytesTotal will always return -1)
 
 @property(nonatomic, copy) void (^progressBlock)(VKProgressType progressType, long long bytesLoaded, long long bytesTotal);
@@ -227,7 +227,7 @@ Register current request for execute after passed request, if passed request is 
 @param completeBlock called if there were no HTTP or API errors, returns execution result.
 @param errorBlock called immediately if there was API error, or after <b>attempts</b> tries if there was an HTTP error
 */
-- (void)executeAfter:(VKRequest *)request
+- (void)executeAfter:(VKSdkRequest *)request
      withResultBlock:(void (^)(VKResponse *response))completeBlock
           errorBlock:(void (^)(NSError *error))errorBlock;
 

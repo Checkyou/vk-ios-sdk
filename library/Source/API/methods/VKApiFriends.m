@@ -24,11 +24,11 @@
 #import "VKUser.h"
 
 @implementation VKApiFriends
-- (VKRequest *)get {
+- (VKSdkRequest *)get {
     return [self prepareRequestWithMethodName:@"get" parameters:nil modelClass:[VKUsersArray class]];
 }
 
-- (VKRequest *)get:(NSDictionary *)params {
+- (VKSdkRequest *)get:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"get" parameters:params modelClass:[VKUsersArray class]];
 }
 

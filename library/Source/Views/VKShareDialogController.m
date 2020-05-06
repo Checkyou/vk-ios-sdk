@@ -89,7 +89,7 @@
 @property(nonatomic, assign) CGSize attachSize;
 @property(nonatomic, strong) NSString *attachmentString;
 @property(nonatomic, strong) UIImage *preview;
-@property(nonatomic, weak) VKRequest *uploadingRequest;
+@property(nonatomic, weak) VKSdkRequest *uploadingRequest;
 @end
 
 
@@ -982,7 +982,7 @@ static const CGFloat kAttachmentsViewSize = 100.0f;
         [attachStrings addObject:[parent.shareLink.link absoluteString]];
     }
 
-    VKRequest *post = [[VKApi wall] post:@{VK_API_MESSAGE : textView.text ?: @"",
+    VKSdkRequest *post = [[VKApi wall] post:@{VK_API_MESSAGE : textView.text ?: @"",
             VK_API_ATTACHMENTS : [attachStrings componentsJoinedByString:@","]}];
     NSMutableArray *exports = [NSMutableArray new];
     if (self.postSettings.friendsOnly.boolValue) [post addExtraParameters:@{VK_API_FRIENDS_ONLY : @1}];
@@ -1082,7 +1082,7 @@ static const CGFloat kAttachmentsViewSize = 100.0f;
         attach.preview = [img.sourceImage vks_roundCornersImage:0.0f resultSize:size];
         [self.attachmentsArray addObject:attach];
 
-        VKRequest *uploadRequest = [VKApi uploadWallPhotoRequest:img.sourceImage parameters:img.parameters userId:0 groupId:0];
+        VKSdkRequest *uploadRequest = [VKApi uploadWallPhotoRequest:img.sourceImage parameters:img.parameters userId:0 groupId:0];
 
         [uploadRequest setCompleteBlock:^(VKResponse *res) {
             VKPhoto *photo = [res.parsedModel firstObject];
@@ -1115,7 +1115,7 @@ static const CGFloat kAttachmentsViewSize = 100.0f;
             attachById[photo] = attach;
         }
 
-        VKRequest *req = [VKRequest requestWithMethod:@"photos.getById" parameters:@{@"photos" : [parent.vkImages componentsJoinedByString:@","], @"photo_sizes" : @1} modelClass:[VKPhotoArray class]];
+        VKSdkRequest *req = [VKSdkRequest requestWithMethod:@"photos.getById" parameters:@{@"photos" : [parent.vkImages componentsJoinedByString:@","], @"photo_sizes" : @1} modelClass:[VKPhotoArray class]];
         [req executeWithResultBlock:^(VKResponse *res) {
             VKPhotoArray *photos = res.parsedModel;
             NSArray *requiredSizes = @[@"p", @"q", @"m"];
@@ -1193,7 +1193,7 @@ static const CGFloat kAttachmentsViewSize = 100.0f;
     VKPhotoAttachmentCell *cell = (VKPhotoAttachmentCell *) [collectionView dequeueReusableCellWithReuseIdentifier:@"VKPhotoAttachmentCell" forIndexPath:indexPath];
 
     cell.attachImageView.image = attach.preview;
-    VKRequest *request = attach.uploadingRequest;
+    VKSdkRequest *request = attach.uploadingRequest;
 
     __weak VKPhotoAttachmentCell *weakCell = cell;
     [request setProgressBlock:^(VKProgressType progressType, long long bytesLoaded, long long bytesTotal) {

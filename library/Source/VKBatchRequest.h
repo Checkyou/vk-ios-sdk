@@ -21,7 +21,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import "VKObject.h"
-#import "VKRequest.h"
+#import "VKSdkRequest.h"
 
 /**
 Used for execution bunch of methods at time, and receive results of that methods in array
@@ -43,7 +43,7 @@ Initializes batch processing with requests
 @param firstRequest ,... A comma-separated list of requests should be loaded, ending with nil.
 @return Prepared request
 */
-- (instancetype)initWithRequests:(VKRequest *)firstRequest, ...NS_REQUIRES_NIL_TERMINATION;
+- (instancetype)initWithRequests:(VKSdkRequest *)firstRequest, ...NS_REQUIRES_NIL_TERMINATION;
 
 /**
 Initializes batch processing with requests array

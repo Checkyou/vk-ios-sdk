@@ -89,7 +89,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
 - (void)setAccessTokenRequiredHTTPS;
 @end
 
-@interface VKRequest () {
+@interface VKSdkRequest () {
     /// Semaphore for blocking current thread
     dispatch_semaphore_t _waitUntilDoneSemaphore;
     CGFloat _waitMultiplier;
@@ -126,7 +126,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
 
 @end
 
-@implementation VKRequest
+@implementation VKSdkRequest
 
 
 - (void)dealloc {
@@ -165,7 +165,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
 }
 
 + (instancetype)requestWithMethod:(NSString *)method parameters:(NSDictionary *)parameters modelClass:(Class)modelClass {
-    VKRequest *newRequest = [self new];
+    VKSdkRequest *newRequest = [self new];
     //Common parameters
     newRequest.parseModel = modelClass != nil;
     newRequest.requestTimeout = 25;
@@ -178,7 +178,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
 }
 
 + (instancetype)photoRequestWithPostUrl:(NSString *)url withPhotos:(NSArray *)photoObjects; {
-    VKRequest *newRequest = [self new];
+    VKSdkRequest *newRequest = [self new];
     newRequest.attempts = 10;
     newRequest.httpMethod = @"POST";
     newRequest.uploadUrl = url;
@@ -220,7 +220,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
     }
 }
 
-- (void)executeAfter:(VKRequest *)request
+- (void)executeAfter:(VKSdkRequest *)request
      withResultBlock:(void (^)(VKResponse *response))completeBlock
           errorBlock:(void (^)(NSError *error))errorBlock {
     self.completeBlock = completeBlock;
@@ -228,7 +228,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
     [request addPostRequest:self];
 }
 
-- (void)addPostRequest:(VKRequest *)postRequest {
+- (void)addPostRequest:(VKSdkRequest *)postRequest {
     if (!_postRequestsQueue)
         _postRequestsQueue = [NSMutableArray new];
     [_postRequestsQueue addObject:postRequest];
@@ -332,7 +332,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
         [_requestTiming finished];
 
     }];
-    operation.successCallbackQueue = operation.failureCallbackQueue = [VKRequest processingQueue];
+    operation.successCallbackQueue = operation.failureCallbackQueue = [VKSdkRequest processingQueue];
     [self setupProgress:operation];
     return operation;
 }
@@ -352,7 +352,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
         [[VKHTTPClient getClient] enqueueOperation:_executionOperation];
     } else {
         VKHTTPOperation *op = (VKHTTPOperation *) _executionOperation;
-        op.successCallbackQueue = op.failureCallbackQueue = [VKRequest processingQueue];
+        op.successCallbackQueue = op.failureCallbackQueue = [VKSdkRequest processingQueue];
         [[VKHTTPClient getClient] enqueueOperation:_executionOperation];
         if (!_waitUntilDoneSemaphore) {
             _waitUntilDoneSemaphore = dispatch_semaphore_create(0);
@@ -390,7 +390,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
         vkResp.json = JSON;
     }
 
-    for (VKRequest *postRequest in _postRequestsQueue) {
+    for (VKSdkRequest *postRequest in _postRequestsQueue) {
         [[VKRequestsScheduler instance] scheduleRequest:postRequest];
     }
     [_requestTiming finished];
@@ -423,7 +423,7 @@ void vksdk_dispatch_on_main_queue_now(void(^block)(void)) {
             if (self.errorBlock) {
                 self.errorBlock(self.error);
             }
-            for (VKRequest *postRequest in _postRequestsQueue) {
+            for (VKSdkRequest *postRequest in _postRequestsQueue) {
                 if (postRequest.errorBlock) {
                     postRequest.errorBlock(self.error);
                 }

@@ -31,15 +31,15 @@
     return self;
 }
 
-- (VKRequest *)getServerRequest {
+- (VKSdkRequest *)getServerRequest {
     if (self.albumId && self.groupId)
         return [[VKApi photos] getUploadServer:self.albumId andGroupId:self.groupId];
     else
         return [[VKApi photos] getUploadServer:self.albumId];
 }
 
-- (VKRequest *)getSaveRequest:(VKResponse *)response {
-    VKRequest *saveRequest = [[VKApi photos] save:response.json];
+- (VKSdkRequest *)getSaveRequest:(VKResponse *)response {
+    VKSdkRequest *saveRequest = [[VKApi photos] save:response.json];
     if (self.albumId)
         [saveRequest addExtraParameters:@{VK_API_ALBUM_ID : @(self.albumId)}];
     if (self.groupId)

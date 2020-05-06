@@ -31,7 +31,7 @@ https://vk.com/dev/photos.getUploadServer
 @param albumId album identifier (positive integer)
 @return Request for load
 */
-- (VKRequest *)getUploadServer:(NSInteger)albumId;
+- (VKSdkRequest *)getUploadServer:(NSInteger)albumId;
 
 /**
 https://vk.com/dev/photos.getUploadServer
@@ -39,20 +39,20 @@ https://vk.com/dev/photos.getUploadServer
 @param groupId group identifier (positive integer)
 @return Request for load
 */
-- (VKRequest *)getUploadServer:(NSInteger)albumId andGroupId:(NSInteger)groupId;
+- (VKSdkRequest *)getUploadServer:(NSInteger)albumId andGroupId:(NSInteger)groupId;
 
 /**
 https://vk.com/dev/photos.getWallUploadServer
 @return Request for load
 */
-- (VKRequest *)getWallUploadServer;
+- (VKSdkRequest *)getWallUploadServer;
 
 /**
 https://vk.com/dev/photos.getWallUploadServer
 @param groupId group identifier (positive integer)
 @return Request for load
 */
-- (VKRequest *)getWallUploadServer:(NSInteger)groupId;
+- (VKSdkRequest *)getWallUploadServer:(NSInteger)groupId;
 
 
 /**
@@ -60,13 +60,13 @@ https://vk.com/dev/photos.save
 @param params params received after photo upload, with user id or group id
 @return Request for load
 */
-- (VKRequest *)save:(NSDictionary *)params;
+- (VKSdkRequest *)save:(NSDictionary *)params;
 
 /**
 https://vk.com/dev/photos.saveWallPhoto
 @param params params received after photo upload, with user id or group id
 @return Request for load
 */
-- (VKRequest *)saveWallPhoto:(NSDictionary *)params;
+- (VKSdkRequest *)saveWallPhoto:(NSDictionary *)params;
 
 @end

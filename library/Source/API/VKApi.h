@@ -21,7 +21,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "VKRequest.h"
+#import "VKSdkRequest.h"
 #import "VKApiUsers.h"
 #import "VKApiFriends.h"
 #import "VKApiPhotos.h"
@@ -76,7 +76,7 @@ Returns object for preparing requests to groups part of API
  @param httpMethod HTTP method for execution, e.g. GET, POST
  @return Complete request class for execute or configure method
 */
-+ (VKRequest *)requestWithMethod:(NSString *)method
++ (VKSdkRequest *)requestWithMethod:(NSString *)method
                    andParameters:(NSDictionary *)parameters
                    andHttpMethod:(NSString *)httpMethod __deprecated;
 
@@ -87,7 +87,7 @@ Returns object for preparing requests to groups part of API
  @param parameters method parameters
  @return Complete request class for execute or configure method
  */
-+ (VKRequest *)requestWithMethod:(NSString *)method
++ (VKSdkRequest *)requestWithMethod:(NSString *)method
                    andParameters:(NSDictionary *)parameters;
 
 /**
@@ -98,7 +98,7 @@ Returns object for preparing requests to groups part of API
  @param userId ID of user on which wall image should be posted (or 0)
  @param groupId ID of group (without minus sign) on which wall image should be posted (or 0)
 */
-+ (VKRequest *)uploadWallPhotoRequest:(UIImage *)image
++ (VKSdkRequest *)uploadWallPhotoRequest:(UIImage *)image
                            parameters:(VKImageParameters *)parameters
                                userId:(NSInteger)userId
                               groupId:(NSInteger)groupId;
@@ -111,7 +111,7 @@ Returns object for preparing requests to groups part of API
  @param albumId target album ID. Required
  @param groupId target group ID (positive). May be 0
 */
-+ (VKRequest *)uploadAlbumPhotoRequest:(UIImage *)image
++ (VKSdkRequest *)uploadAlbumPhotoRequest:(UIImage *)image
                             parameters:(VKImageParameters *)parameters
                                albumId:(NSInteger)albumId
                                groupId:(NSInteger)groupId;
@@ -122,7 +122,7 @@ Returns object for preparing requests to groups part of API
  @param image image used for saving to post
  @param parameters parameters for image to be uploaded
 */
-+ (VKRequest *)uploadMessagePhotoRequest:(UIImage *)image
++ (VKSdkRequest *)uploadMessagePhotoRequest:(UIImage *)image
                               parameters:(VKImageParameters *)parameters;
 
 

@@ -38,7 +38,7 @@
 }
 
 - (IBAction)getUser:(id)sender {
-    VKRequest *request = [[VKApi users] get];
+    VKSdkRequest *request = [[VKApi users] get];
     [request executeWithResultBlock:^(VKResponse *response) {
         NSLog(@"Result: %@", response);
     }                    errorBlock:^(NSError *error) {
@@ -47,7 +47,7 @@
 }
 
 - (IBAction)getSubscriptions:(id)sender {
-    VKRequest *request = [[VKApi users] getSubscriptions:@{VK_API_EXTENDED : @(1), VK_API_COUNT : @(100)}];
+    VKSdkRequest *request = [[VKApi users] getSubscriptions:@{VK_API_EXTENDED : @(1), VK_API_COUNT : @(100)}];
     request.secure = NO;
     [request executeWithResultBlock:^(VKResponse *response) {
         NSLog(@"Result: %@", response);
@@ -97,7 +97,7 @@ static NSString *const ALL_USER_FIELDS = @"id,first_name,last_name,sex,bdate,cit
         [self callMethod:[[VKApi users] get:@{VK_API_FIELDS : @"first_name, last_name, uid, photo_100", VK_API_USER_IDS : @[@(1), @(2), @(3)]}]];
     }
     else if ([label isEqualToString:USERS_SUBSCRIPTIONS]) {
-        [self callMethod:[VKRequest requestWithMethod:@"users.getFollowers" parameters:@{VK_API_USER_ID : @"1", VK_API_COUNT : @(1000), VK_API_FIELDS : ALL_USER_FIELDS} modelClass:[VKUsersArray class]]];
+        [self callMethod:[VKSdkRequest requestWithMethod:@"users.getFollowers" parameters:@{VK_API_USER_ID : @"1", VK_API_COUNT : @(1000), VK_API_FIELDS : ALL_USER_FIELDS} modelClass:[VKUsersArray class]]];
     }
     else if ([label isEqualToString:UPLOAD_PHOTO]) {
         [self uploadPhoto];
@@ -115,21 +115,21 @@ static NSString *const ALL_USER_FIELDS = @"id,first_name,last_name,sex,bdate,cit
         [self callMethod:[[VKApi friends] get]];
     }
     else if ([label isEqualToString:FRIENDS_GET_FULL]) {
-        VKRequest *friendsRequest = [[VKApi friends] get:@{VK_API_FIELDS : ALL_USER_FIELDS}];
+        VKSdkRequest *friendsRequest = [[VKApi friends] get:@{VK_API_FIELDS : ALL_USER_FIELDS}];
         [self callMethod:friendsRequest];
     }
     else if ([label isEqualToString:CALL_UNKNOWN_METHOD]) {
-        [self callMethod:[VKRequest requestWithMethod:@"I.am.Lord.Voldemort" parameters:nil]];
+        [self callMethod:[VKSdkRequest requestWithMethod:@"I.am.Lord.Voldemort" parameters:nil]];
     }
     else if ([label isEqualToString:TEST_VALIDATION]) {
-        [self callMethod:[VKRequest requestWithMethod:@"account.testValidation" parameters:nil]];
+        [self callMethod:[VKSdkRequest requestWithMethod:@"account.testValidation" parameters:nil]];
     }
     else if ([label isEqualToString:MAKE_SYNCHRONOUS]) {
         VKUsersArray *users = [self loadUsers];
         NSLog(@"users %@", users);
     }
     else if ([label isEqualToString:AUDIO_GET]) {
-        [self callMethod:[VKRequest requestWithMethod:@"audio.get" parameters:nil modelClass:[VKAudios class]]];
+        [self callMethod:[VKSdkRequest requestWithMethod:@"audio.get" parameters:nil modelClass:[VKAudios class]]];
     }
     else if ([label isEqualToString:SHARE_DIALOG]) {
 
@@ -162,14 +162,14 @@ static NSString *const ALL_USER_FIELDS = @"id,first_name,last_name,sex,bdate,cit
         [self presentViewController:activityViewController animated:YES completion:nil];
     }
     else if ([label isEqualToString:TEST_APPREQUEST]) {
-        [self callMethod:[VKRequest requestWithMethod:@"apps.sendRequest" parameters:@{@"user_id" : @45898586, @"text" : @"Yo ho ho", @"type" : @"request", @"name" : @"I need more gold", @"key" : @"more_gold"}]];
+        [self callMethod:[VKSdkRequest requestWithMethod:@"apps.sendRequest" parameters:@{@"user_id" : @45898586, @"text" : @"Yo ho ho", @"type" : @"request", @"name" : @"I need more gold", @"key" : @"more_gold"}]];
 
     }
 }
 
 - (VKUsersArray *)loadUsers {
     __block VKUsersArray *users;
-    VKRequest *request = [[VKApi friends] get:@{@"user_id" : @1}];
+    VKSdkRequest *request = [[VKApi friends] get:@{@"user_id" : @1}];
     request.waitUntilDone = YES;
     [request executeWithResultBlock:^(VKResponse *response) {
         users = response.parsedModel;
@@ -185,13 +185,13 @@ static NSString *const ALL_USER_FIELDS = @"id,first_name,last_name,sex,bdate,cit
     }
 }
 
-- (void)callMethod:(VKRequest *)method {
+- (void)callMethod:(VKSdkRequest *)method {
     self->callingRequest = method;
     [self performSegueWithIdentifier:@"API_CALL" sender:self];
 }
 
 - (void)testCaptcha {
-    VKRequest *request = [[VKApiCaptcha new] force];
+    VKSdkRequest *request = [[VKApiCaptcha new] force];
     [request executeWithResultBlock:^(VKResponse *response) {
         NSLog(@"Result: %@", response);
     }                    errorBlock:^(NSError *error) {
@@ -200,12 +200,12 @@ static NSString *const ALL_USER_FIELDS = @"id,first_name,last_name,sex,bdate,cit
 }
 
 - (void)uploadPhoto {
-    VKRequest *request = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
+    VKSdkRequest *request = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
     [request executeWithResultBlock:^(VKResponse *response) {
         NSLog(@"Photo: %@", response.json);
         VKPhoto *photoInfo = [(VKPhotoArray *) response.parsedModel objectAtIndex:0];
         NSString *photoAttachment = [NSString stringWithFormat:@"photo%@_%@", photoInfo.owner_id, photoInfo.id];
-        VKRequest *post = [[VKApi wall] post:@{VK_API_ATTACHMENTS : photoAttachment, VK_API_OWNER_ID : @"-60479154"}];
+        VKSdkRequest *post = [[VKApi wall] post:@{VK_API_ATTACHMENTS : photoAttachment, VK_API_OWNER_ID : @"-60479154"}];
         [post executeWithResultBlock:^(VKResponse *postResponse) {
             NSLog(@"Result: %@", postResponse);
             NSNumber *postId = postResponse.json[@"post_id"];
@@ -219,10 +219,10 @@ static NSString *const ALL_USER_FIELDS = @"id,first_name,last_name,sex,bdate,cit
 }
 
 - (void)uploadPhotos {
-    VKRequest *request1 = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
-    VKRequest *request2 = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
-    VKRequest *request3 = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
-    VKRequest *request4 = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
+    VKSdkRequest *request1 = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
+    VKSdkRequest *request2 = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
+    VKSdkRequest *request3 = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
+    VKSdkRequest *request4 = [VKApi uploadWallPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] userId:0 groupId:60479154];
     VKBatchRequest *batch = [[VKBatchRequest alloc] initWithRequests:request1, request2, request3, request4, nil];
     [batch executeWithResultBlock:^(NSArray *responses) {
         NSLog(@"Photos: %@", responses);
@@ -231,7 +231,7 @@ static NSString *const ALL_USER_FIELDS = @"id,first_name,last_name,sex,bdate,cit
             VKPhoto *photoInfo = [(VKPhotoArray *) resp.parsedModel objectAtIndex:0];
             [photosAttachments addObject:[NSString stringWithFormat:@"photo%@_%@", photoInfo.owner_id, photoInfo.id]];
         }
-        VKRequest *post = [[VKApi wall] post:@{VK_API_ATTACHMENTS : [photosAttachments componentsJoinedByString:@","], VK_API_OWNER_ID : @"-60479154"}];
+        VKSdkRequest *post = [[VKApi wall] post:@{VK_API_ATTACHMENTS : [photosAttachments componentsJoinedByString:@","], VK_API_OWNER_ID : @"-60479154"}];
         [post executeWithResultBlock:^(VKResponse *response) {
             NSLog(@"Result: %@", response);
             NSNumber *postId = response.json[@"post_id"];
@@ -245,7 +245,7 @@ static NSString *const ALL_USER_FIELDS = @"id,first_name,last_name,sex,bdate,cit
 }
 
 - (void)uploadInAlbum {
-    VKRequest *request = [VKApi uploadAlbumPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] albumId:181808365 groupId:60479154];
+    VKSdkRequest *request = [VKApi uploadAlbumPhotoRequest:[UIImage imageNamed:@"apple"] parameters:[VKImageParameters pngImage] albumId:181808365 groupId:60479154];
     [request executeWithResultBlock:^(VKResponse *response) {
         NSLog(@"Result: %@", response);
         VKPhoto *photo = [(VKPhotoArray *) response.parsedModel objectAtIndex:0];

@@ -20,14 +20,14 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import "VKRequest.h"
+#import "VKSdkRequest.h"
 #import "VKImageParameters.h"
 #import "VKOperation.h"
 
 /**
 Provides common part of photo upload process
 */
-@interface VKUploadPhotoBase : VKRequest
+@interface VKUploadPhotoBase : VKSdkRequest
 /// ID of album to upload
 @property(nonatomic, assign) NSInteger albumId;
 /// ID of group to upload

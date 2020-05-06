@@ -26,47 +26,47 @@
 @implementation VKApiUsers
 #pragma mark get
 
-- (VKRequest *)get {
+- (VKSdkRequest *)get {
     return [self get:nil];
 }
 
-- (VKRequest *)get:(NSDictionary *)params {
+- (VKSdkRequest *)get:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"get" parameters:params modelClass:[VKUsersArray class]];
 }
 
 #pragma mark search
 
-- (VKRequest *)search:(NSDictionary *)params {
+- (VKSdkRequest *)search:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"search" parameters:params modelClass:[VKUsersArray class]];
 }
 
 #pragma mark isAppUser
 
-- (VKRequest *)isAppUser {
+- (VKSdkRequest *)isAppUser {
     return [self prepareRequestWithMethodName:@"isAppUser" parameters:nil];
 }
 
-- (VKRequest *)isAppUser:(NSInteger)userID {
+- (VKSdkRequest *)isAppUser:(NSInteger)userID {
     return [self prepareRequestWithMethodName:@"isAppUser" parameters:@{VK_API_USER_ID : @(userID)}];
 }
 
 #pragma mark subscriptions
 
-- (VKRequest *)getSubscriptions {
+- (VKSdkRequest *)getSubscriptions {
     return [self getSubscriptions:nil];
 }
 
-- (VKRequest *)getSubscriptions:(NSDictionary *)params {
+- (VKSdkRequest *)getSubscriptions:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"getSubscriptions" parameters:params];
 }
 
 #pragma mark followers
 
-- (VKRequest *)getFollowers {
+- (VKSdkRequest *)getFollowers {
     return [self getFollowers:nil];
 }
 
-- (VKRequest *)getFollowers:(NSDictionary *)params {
+- (VKSdkRequest *)getFollowers:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"getFollowers" parameters:params modelClass:[VKUsersArray class]];
 }
 

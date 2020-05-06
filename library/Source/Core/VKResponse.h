@@ -22,7 +22,7 @@
 
 #import "VKObject.h"
 #import "VKApiObject.h"
-@class VKRequest;
+@class VKSdkRequest;
 
 /**
 Class presenting answer from API
@@ -30,7 +30,7 @@ Class presenting answer from API
 @interface VKResponse <__covariant ModelClass:VKApiObject*> : VKObject
 
 /// Request which caused response
-@property(nonatomic, weak) VKRequest *request;
+@property(nonatomic, weak) VKSdkRequest *request;
 /// Json content of response. Can be array or object.
 @property(nonatomic, strong) id json;
 /// Model parsed from response

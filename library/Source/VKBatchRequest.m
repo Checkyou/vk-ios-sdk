@@ -25,12 +25,12 @@
 #import "NSError+VKError.h"
 
 @implementation VKBatchRequest
-- (instancetype)initWithRequests:(VKRequest *)firstRequest, ... {
+- (instancetype)initWithRequests:(VKSdkRequest *)firstRequest, ... {
     self = [super init];
     _requests = [NSMutableArray new];
     va_list args;
     va_start(args, firstRequest);
-    for (VKRequest *arg = firstRequest; arg != nil; arg = va_arg(args, VKRequest *)) {
+    for (VKSdkRequest *arg = firstRequest; arg != nil; arg = va_arg(args, VKSdkRequest *)) {
         [_requests addObject:arg];
     }
     va_end(args);
@@ -54,7 +54,7 @@
     }
 
     NSMutableArray *batchOperations = [NSMutableArray arrayWithCapacity:_requests.count];
-    for (VKRequest *request in _requests) {
+    for (VKSdkRequest *request in _requests) {
         void (^originalComplete)(VKResponse *) = [request.completeBlock copy];
         request.completeBlock = ^(VKResponse *response) {
             [self provideResponse:response];
@@ -77,7 +77,7 @@
 - (void)cancel {
     if (_canceled) return;
     _canceled = YES;
-    for (VKRequest *request in _requests)
+    for (VKSdkRequest *request in _requests)
         [request cancel];
     [self provideError:[NSError errorWithVkError:[VKError errorWithCode:VK_API_CANCELED]]];
 

@@ -24,27 +24,27 @@
 #import "VKPhoto.h"
 
 @implementation VKApiPhotos
-- (VKRequest *)getUploadServer:(NSInteger)albumId {
+- (VKSdkRequest *)getUploadServer:(NSInteger)albumId {
     return [self prepareRequestWithMethodName:@"getUploadServer" parameters:@{VK_API_ALBUM_ID : @(albumId)}];
 }
 
-- (VKRequest *)getUploadServer:(NSInteger)albumId andGroupId:(NSInteger)groupId {
+- (VKSdkRequest *)getUploadServer:(NSInteger)albumId andGroupId:(NSInteger)groupId {
     return [self prepareRequestWithMethodName:@"getUploadServer" parameters:@{VK_API_ALBUM_ID : @(albumId), VK_API_GROUP_ID : @(groupId)}];
 }
 
-- (VKRequest *)getWallUploadServer {
+- (VKSdkRequest *)getWallUploadServer {
     return [self prepareRequestWithMethodName:@"getWallUploadServer" parameters:nil];
 }
 
-- (VKRequest *)getWallUploadServer:(NSInteger)groupId {
+- (VKSdkRequest *)getWallUploadServer:(NSInteger)groupId {
     return [self prepareRequestWithMethodName:@"getWallUploadServer" parameters:@{VK_API_GROUP_ID : @(groupId)}];
 }
 
-- (VKRequest *)saveWallPhoto:(NSDictionary *)params {
+- (VKSdkRequest *)saveWallPhoto:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"saveWallPhoto" parameters:params modelClass:[VKPhotoArray class]];
 }
 
-- (VKRequest *)save:(NSDictionary *)params {
+- (VKSdkRequest *)save:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"save" parameters:params modelClass:[VKPhotoArray class]];
 }
 

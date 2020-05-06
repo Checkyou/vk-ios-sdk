@@ -30,5 +30,5 @@ Methods for captcha work. Currently, it is 1 method for forcing captcha response
 Returns error for captcha debugging
 @return Request to load
 */
-- (VKRequest *)force;
+- (VKSdkRequest *)force;
 @end

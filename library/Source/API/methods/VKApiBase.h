@@ -21,7 +21,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import "VKRequest.h"
+#import "VKSdkRequest.h"
 #import "VKApiConst.h"
 #import "VKObject.h"
 
@@ -44,7 +44,7 @@ Return group name for current methods builder
  @param methodParameters Selected method parameters
  @return request to configure and load
  */
-- (VKRequest *)prepareRequestWithMethodName:(NSString *)methodName
+- (VKSdkRequest *)prepareRequestWithMethodName:(NSString *)methodName
                                  parameters:(NSDictionary *)methodParameters;
 
 /**
@@ -54,7 +54,7 @@ Return group name for current methods builder
  @param modelClass Class of model, based on VKApiObject, for model parsing
  @return request to configure and load
  */
-- (VKRequest *)prepareRequestWithMethodName:(NSString *)methodName
+- (VKSdkRequest *)prepareRequestWithMethodName:(NSString *)methodName
                                  parameters:(NSDictionary *)methodParameters
                                  modelClass:(Class)modelClass;
 

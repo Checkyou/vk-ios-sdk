@@ -23,7 +23,7 @@
 #import "VKApiWall.h"
 
 @implementation VKApiWall
-- (VKRequest *)post:(NSDictionary *)params {
+- (VKSdkRequest *)post:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"post" parameters:params];
 }
 

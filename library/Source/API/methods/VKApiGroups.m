@@ -10,7 +10,7 @@
 #import "VKGroup.h"
 
 @implementation VKApiGroups
-- (VKRequest *)getById:(NSDictionary *)params {
+- (VKSdkRequest *)getById:(NSDictionary *)params {
     return [self prepareRequestWithMethodName:@"getById" parameters:params modelClass:[VKGroups class]];
 }
 @end

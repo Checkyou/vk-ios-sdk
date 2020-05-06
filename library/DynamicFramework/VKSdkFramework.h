@@ -38,7 +38,7 @@ FOUNDATION_EXPORT const unsigned char VKSdkFrameworkVersionString[];
 #import <VKSdkFramework/VKApiConst.h>
 #import <VKSdkFramework/VKSdkVersion.h>
 #import <VKSdkFramework/VKCaptchaViewController.h>
-#import <VKSdkFramework/VKRequest.h>
+#import <VKSdkFramework/VKSdkRequest.h>
 #import <VKSdkFramework/VKBatchRequest.h>
 #import <VKSdkFramework/NSError+VKError.h>
 #import <VKSdkFramework/VKApiModels.h>

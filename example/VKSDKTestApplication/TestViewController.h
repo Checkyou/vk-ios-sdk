@@ -24,7 +24,7 @@
 
 @interface TestViewController : UITableViewController {
 @private
-    VKRequest *callingRequest;
+    VKSdkRequest *callingRequest;
 }
 @property(nonatomic, strong) IBOutlet UILabel *tokenLabel;
 @end

@@ -33,7 +33,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)get;
+- (VKSdkRequest *)get;
 
 /**
  *   Returns detailed information about user or community documents.
@@ -43,7 +43,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)get:(NSInteger)count;
+- (VKSdkRequest *)get:(NSInteger)count;
 
 /**
  *  Returns detailed information about user or community documents.
@@ -54,7 +54,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)get:(NSInteger)count andOffset:(NSInteger)offset;
+- (VKSdkRequest *)get:(NSInteger)count andOffset:(NSInteger)offset;
 
 /**
  *  Returns detailed information about user or community documents.
@@ -66,7 +66,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)get:(NSInteger)count andOffset:(NSInteger)offset andOwnerID:(NSInteger)ownerID;
+- (VKSdkRequest *)get:(NSInteger)count andOffset:(NSInteger)offset andOwnerID:(NSInteger)ownerID;
 
 /**
  *  Returns information about documents by their IDs.
@@ -75,7 +75,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)getByID:(NSArray *)IDs;
+- (VKSdkRequest *)getByID:(NSArray *)IDs;
 
 /**
  *  Returns the server address for document upload.
@@ -83,7 +83,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)getUploadServer;
+- (VKSdkRequest *)getUploadServer;
 
 /**
  *  Returns the server address for document upload.
@@ -93,7 +93,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)getUploadServer:(NSInteger)group_id;
+- (VKSdkRequest *)getUploadServer:(NSInteger)group_id;
 
 /**
  *  Returns the server address for document upload onto a user's or community's wall.
@@ -101,7 +101,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)getWallUploadServer;
+- (VKSdkRequest *)getWallUploadServer;
 
 /**
  *  Returns the server address for document upload onto a user's or community's wall.
@@ -111,7 +111,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)getWallUploadServer:(NSInteger)group_id;
+- (VKSdkRequest *)getWallUploadServer:(NSInteger)group_id;
 
 /**
  *  Saves a document after uploading it to a server.
@@ -121,7 +121,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)save:(NSString *)file;
+- (VKSdkRequest *)save:(NSString *)file;
 
 /**
  *  Saves a document after uploading it to a server.
@@ -132,7 +132,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)save:(NSString *)file andTitle:(NSString *)title;
+- (VKSdkRequest *)save:(NSString *)file andTitle:(NSString *)title;
 
 /**
  *  Saves a document after uploading it to a server.
@@ -144,7 +144,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)save:(NSString *)file andTitle:(NSString *)title andTags:(NSString *)tags;
+- (VKSdkRequest *)save:(NSString *)file andTitle:(NSString *)title andTags:(NSString *)tags;
 
 /**
  *  Deletes a user or community document.
@@ -155,7 +155,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)delete:(NSInteger)ownerID andDocID:(NSInteger)docID;
+- (VKSdkRequest *)delete:(NSInteger)ownerID andDocID:(NSInteger)docID;
 
 /**
  *  Copies a document to a user's or community's document list.
@@ -166,7 +166,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)add:(NSInteger)ownerID andDocID:(NSInteger)docID;
+- (VKSdkRequest *)add:(NSInteger)ownerID andDocID:(NSInteger)docID;
 
 /**
  *  Copies a document to a user's or community's document list.
@@ -178,7 +178,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)add:(NSInteger)ownerID andDocID:(NSInteger)docID andAccessKey:(NSString *)accessKey;
+- (VKSdkRequest *)add:(NSInteger)ownerID andDocID:(NSInteger)docID andAccessKey:(NSString *)accessKey;
 
 /**
  *  Returns results of search
@@ -188,7 +188,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)search:(NSString *)query;
+- (VKSdkRequest *)search:(NSString *)query;
 
 /**
  *  Returns results of search
@@ -199,7 +199,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)search:(NSString *)query count:(NSInteger)count;
+- (VKSdkRequest *)search:(NSString *)query count:(NSInteger)count;
 
 /**
  *  Returns results of search
@@ -211,7 +211,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)search:(NSString *)query count:(NSInteger)count andOffset:(NSInteger)offset;
+- (VKSdkRequest *)search:(NSString *)query count:(NSInteger)count andOffset:(NSInteger)offset;
 
 /**
  *  Edits a current user's document.
@@ -222,7 +222,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)edit:(NSInteger)docID title:(NSString *)title;
+- (VKSdkRequest *)edit:(NSInteger)docID title:(NSString *)title;
 
 /**
  *  Edits a current user's document.
@@ -234,7 +234,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)edit:(NSInteger)docID title:(NSString *)title tags:(NSString *)tags;
+- (VKSdkRequest *)edit:(NSInteger)docID title:(NSString *)title tags:(NSString *)tags;
 
 /**
  *  Edits a user's or community's document.
@@ -246,7 +246,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)edit:(NSInteger)ownerID docID:(NSInteger)docID title:(NSString *)title;
+- (VKSdkRequest *)edit:(NSInteger)ownerID docID:(NSInteger)docID title:(NSString *)title;
 
 /**
  *  Edits a user's or community's document.
@@ -259,7 +259,7 @@
  *
  *  @return Request to load
  */
-- (VKRequest *)edit:(NSInteger)ownerID docID:(NSInteger)docID title:(NSString *)title tags:(NSString *)tags;
+- (VKSdkRequest *)edit:(NSInteger)ownerID docID:(NSInteger)docID title:(NSString *)title tags:(NSString *)tags;
 
 
 

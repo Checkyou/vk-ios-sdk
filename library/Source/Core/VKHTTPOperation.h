@@ -28,21 +28,21 @@
 
 extern NSString *const VKNetworkingOperationDidStart;
 
-@class VKRequest;
+@class VKSdkRequest;
 
 /**
 VK URL operation subclassing NSOperation.
 Based on AFNetworking library ( https://github.com/AFNetworking/AFNetworking )
 */
 @interface VKHTTPOperation : VKOperation <NSURLConnectionDataDelegate, NSURLConnectionDelegate, NSCoding, NSCopying>
-@property(nonatomic, strong) VKRequest *loadingRequest;
+@property(nonatomic, strong) VKSdkRequest *loadingRequest;
 
 /**
 Creates new operation with prepared request.
 @param request Prepared VK request to API
 @return Initialized operation
 */
-+ (instancetype)operationWithRequest:(VKRequest *)request;
++ (instancetype)operationWithRequest:(VKSdkRequest *)request;
 
 ///-------------------------------
 /// @name Accessing Run Loop Modes
@@ -60,7 +60,7 @@ The run loop modes in which the operation will run on the network thread. By def
 /**
 The vk request initialized that operation
 */
-@property(readonly, nonatomic, weak) VKRequest *vkRequest;
+@property(readonly, nonatomic, weak) VKSdkRequest *vkRequest;
 /**
 The request used by the operation's connection.
 */

@@ -26,7 +26,7 @@
 Builds requests for API.users part
 */
 @interface VKApiFriends : VKApiBase
-- (VKRequest *)get;
+- (VKSdkRequest *)get;
 
-- (VKRequest *)get:(NSDictionary *)params;
+- (VKSdkRequest *)get:(NSDictionary *)params;
 @end
