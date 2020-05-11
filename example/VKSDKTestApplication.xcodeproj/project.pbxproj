@@ -79,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F184BC2A2469D1430083C3EF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F34DECFD1D2173C9005495E5 /* VK-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "VK-ios-sdk.xcodeproj"; path = "../VK-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		F36114AA197687050085898F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F36114C11976DC770085898F /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		F3EEFF681827B1DD000BB525 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F184BC2A2469D1430083C3EF /* WebKit.framework */,
 				F3769E661BE8D48800AEC4AF /* SafariServices.framework */,
 				F3EEFFCF1827F9B5000BB525 /* SystemConfiguration.framework */,
 				F3EEFFCD1827F9AF000BB525 /* MobileCoreServices.framework */,

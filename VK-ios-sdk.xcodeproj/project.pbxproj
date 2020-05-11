@@ -66,6 +66,7 @@
 		8F99D63A1C42C61A0006DB03 /* VKDocs.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F99D6381C42C61A0006DB03 /* VKDocs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F99D63B1C42C61A0006DB03 /* VKDocs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F99D6391C42C61A0006DB03 /* VKDocs.m */; };
 		8F99D63C1C42C61A0006DB03 /* VKDocs.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F99D6391C42C61A0006DB03 /* VKDocs.m */; };
+		F184BC302469D1570083C3EF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F184BC2F2469D1570083C3EF /* WebKit.framework */; };
 		F1925462241A6E4C000F25B9 /* SdkAssetCatalog.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1925460241A6D0B000F25B9 /* SdkAssetCatalog.xcassets */; };
 		F3007C5D1AEE50B5007CCA9D /* VKApiConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F3007C5C1AEE50B5007CCA9D /* VKApiConst.m */; };
 		F3050D211C49123C0092FE76 /* VKDocs.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F99D6381C42C61A0006DB03 /* VKDocs.h */; };
@@ -421,6 +422,7 @@
 		8F99D6341C42C6010006DB03 /* VKApiDocs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VKApiDocs.m; path = library/Source/API/methods/VKApiDocs.m; sourceTree = SOURCE_ROOT; };
 		8F99D6381C42C61A0006DB03 /* VKDocs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKDocs.h; sourceTree = "<group>"; };
 		8F99D6391C42C61A0006DB03 /* VKDocs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKDocs.m; sourceTree = "<group>"; };
+		F184BC2F2469D1570083C3EF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		F1925460241A6D0B000F25B9 /* SdkAssetCatalog.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SdkAssetCatalog.xcassets; sourceTree = "<group>"; };
 		F3007C5C1AEE50B5007CCA9D /* VKApiConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKApiConst.m; sourceTree = "<group>"; };
 		F3454FCE1ABB1D1A00B15E85 /* VKRequestsScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKRequestsScheduler.h; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			files = (
 				F3C68F171C0C855C00E1EB5E /* Security.framework in Frameworks */,
 				F3769E711BE8E41C00AEC4AF /* SafariServices.framework in Frameworks */,
+				F184BC302469D1570083C3EF /* WebKit.framework in Frameworks */,
 				F3769E6F1BE8E41800AEC4AF /* CoreGraphics.framework in Frameworks */,
 				F346704B1B8B7C70003EF74B /* Foundation.framework in Frameworks */,
 				F346704A1B8B7C6B003EF74B /* UIKit.framework in Frameworks */,
@@ -722,6 +725,7 @@
 		F3C7542F182133CC00964716 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F184BC2F2469D1570083C3EF /* WebKit.framework */,
 				F3C68F161C0C855C00E1EB5E /* Security.framework */,
 				F3769E701BE8E41C00AEC4AF /* SafariServices.framework */,
 				F3769E6E1BE8E41800AEC4AF /* CoreGraphics.framework */,
@@ -1240,7 +1244,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "library/Resources/Resources-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1260,7 +1264,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "SDK resources/SDK resources-Prefix.pch";
 				INFOPLIST_FILE = "library/Resources/Resources-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vk.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1397,7 +1401,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				INSTALL_PATH = /;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = "$(PUBLIC_HEADERS_FOLDER_PATH)/Private";
@@ -1419,7 +1423,7 @@
 				DSTROOT = /tmp/sdk.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INSTALL_PATH = /;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = "$(PUBLIC_HEADERS_FOLDER_PATH)/Private";
